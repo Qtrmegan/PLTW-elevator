@@ -29,7 +29,7 @@
 int callup [3];
 int calldown [3];
 int floorat[3];
-
+// add in chaning the limit1 2 and 3 to a line flower
     int main ()
     {
 
@@ -60,25 +60,26 @@ int floorat[3];
             floorat[2] = 0;
         }
 
-        if (SensorValue[floor1] == 1)
+        if (SensorValue[floor1] == 1)        // setting where to "call down from" 
+        																		// setting the LED to where the eleavator is 
         {
             calldown[0] = 1;
             SensorValue[LED1] = 1;
         }
 
-        if (SensorValue[floor2] == 1 && floorat[2] == 1)
+        if (SensorValue[floor2] == 1 && floorat[2] == 1)    // if floor 2 is clicked AND the elevator is on the 3rd floor then call the elevator down one and set he LED to two
         {
             calldown[1] = 1;
             SensorValue[LED2] = 1;
         }
 
-        if (SensorValue[floor2] == 1 && floorat[0] == 1)
+        if (SensorValue[floor2] == 1 && floorat[0] == 1) // if floor two is called AND the elevator is on the first floor, bring it up one, and set the 2nd led on
         {
             callup[1] = 1;
             SensorValue[LED2] = 1;
         }
 
-        if (SensorValue[floor3])
+        if (SensorValue[floor3])  //if floor 3 is called send it up two and set the third LED on
         {
             callup[2] = 1;
             SensorValue[LED3] = 1;
