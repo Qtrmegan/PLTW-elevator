@@ -29,11 +29,11 @@
 int callup [3];
 int calldown [3];
 int floorat[3];
-// add in chaning the limit1 2 and 3 to a line flower
+
     int main ()
     {
 
-        if (SensorValue[limit1] == 1)            //trying to see where the elevator is
+        if (SensorValue[sensorLineFollower1] == 1)            //trying to see where the elevator is
         {
             floorat[0] = 1;
         }
@@ -42,7 +42,7 @@ int floorat[3];
             floorat[0] = 0;
         }
 
-        if (SensorValue[limit2] == 1)
+        if (SensorValue[sensorLineFollower2] == 1)
         {
             floorat[1] = 1;
         }
@@ -51,7 +51,7 @@ int floorat[3];
             floorat[1] = 0;
         }
 
-        if (SensorValue[limit3] == 1)
+        if (SensorValue[sensorLineFollower3] == 1)
         {
             floorat[2] = 1;
         }
@@ -60,8 +60,8 @@ int floorat[3];
             floorat[2] = 0;
         }
 
-        if (SensorValue[floor1] == 1)        // setting where to "call down from" 
-        																		// setting the LED to where the eleavator is 
+        if (SensorValue[floor1] == 1)        // setting where to "call down from"
+        																	// setting the LED to where the eleavator is
         {
             calldown[0] = 1;
             SensorValue[LED1] = 1;
@@ -136,7 +136,7 @@ int floorat[3];
         if (callup[2] == 1 && floorat[1] == 1 && calldown[0] == 0 || callup[2] == 1 && floorat[0] == 1 && callup[1] == 0)
         {
             startMotor(mainMotor, 60);
-            untilTouch(limit3);
+            untilTouch(sensorLineFollower3);
             stopMotor(mainMotor);
             callup[2] = 0;
             wait(1);
@@ -146,7 +146,7 @@ int floorat[3];
         if (callup[1] == 1 && floorat[0] == 1)
         {
             startMotor(mainMotor, 60);
-            untilTouch(limit2);
+            untilTouch(sensorLineFollower2);
             stopMotor(mainMotor);
             callup[1] = 0;
             wait(1);
@@ -156,17 +156,18 @@ int floorat[3];
         if (calldown[1] == 1 && floorat[2] == 1)
         {
             startMotor(mainMotor, -60);
-            untilTouch(limit2);
+            untilTouch(sensorLineFollower2);
             stopMotor(mainMotor);
             calldown[1] = 0;
             wait(1);
             main();
         }
 
-        if (calldown[0] == 1 && floorat[2] == 1 && calldown[1] == 0 || calldown[0] == 1 && floorat[1] == 1)
+        if (calldown[0] == 1 && floorat[2] == 1 && calldown[1] == 0 || calldown[0] == 1 && floorat[1] == 1)   // goes down till it hits the floor
         {
             startMotor(mainMotor, -60);
-            untilTouch(limit1);
+            untilTouch(sensorLineFollower1
+);  //change the the line follower 
             stopMotor(mainMotor);
             calldown[0] = 0;
             wait(1);
