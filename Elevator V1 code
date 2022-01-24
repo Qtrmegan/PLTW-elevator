@@ -31,6 +31,7 @@
 int callup [3];
 int calldown [3];
 int floorat[3];
+void motors();
 
     int main ()
     {
@@ -86,13 +87,10 @@ int floorat[3];
             callup[2] = 1;
             SensorValue[LED3] = 1;
         }
-
         motors ();
-
+        return(0);
     }
-
-
-    void motors ()
+   void motors ()
     {
 
         if (callup[2] == 1 && floorat[2] == 1)
@@ -168,8 +166,7 @@ int floorat[3];
         if (calldown[0] == 1 && floorat[2] == 1 && calldown[1] == 0 || calldown[0] == 1 && floorat[1] == 1)   // goes down till it hits the floor
         {
             startMotor(mainMotor, -60);
-            untilTouch(floor1);
-  //change the the line follower 
+            untilTouch(floor1);  //change the the line follower 
             stopMotor(mainMotor);
             calldown[0] = 0;
             wait(1);
